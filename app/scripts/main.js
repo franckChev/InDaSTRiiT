@@ -27,7 +27,7 @@
             });
             geojson.addTo(map);
         }
-    }
+    };
     xhr.open("GET", "data/profiles.json");
     xhr.send();
 
