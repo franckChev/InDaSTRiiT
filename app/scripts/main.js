@@ -12,6 +12,26 @@
         zoom: 17
     });
 
+    //centre la carte
+    map.locate({setView: true, maxZoom: 16});
+
+    //---- mon cercle de recherche autour de ma position
+    function onLocationFound(e) {
+    var radius = 100;
+
+    L.circle(e.latlng, radius).addTo(map);
+    }
+
+    map.on('locationfound', onLocationFound);
+
+    function onLocationError(e) {
+    alert(e.message);
+    }
+
+    map.on('locationerror', onLocationError);
+    //----
+
+
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
 
