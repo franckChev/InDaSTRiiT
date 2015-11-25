@@ -1,0 +1,86 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2015-11-25T14:29:02Z",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "way/79150182",
+      "properties": {
+        "@id": "way/79150182",
+        "addr:city": "Ivry-sur-Seine",
+        "addr:housenumber": "77",
+        "addr:postcode": "94200",
+        "addr:street": "Avenue Georges Gosnat",
+        "amenity": "cinema",
+        "building": "yes",
+        "contact:phone": "0172046460",
+        "name": "Le Luxy",
+        "source": "extraction vectorielle v1 cadastre-dgi-fr source : Direction Générale des Impôts - Cadas. Mise à jour : 2010",
+        "toilets:wheelchair": "yes",
+        "website": "www.luxy.ivry94.fr",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2.389437,
+              48.8136629
+            ],
+            [
+              2.3893093,
+              48.8136059
+            ],
+            [
+              2.3892667,
+              48.8135869
+            ],
+            [
+              2.3892524,
+              48.8135445
+            ],
+            [
+              2.3894564,
+              48.813326
+            ],
+            [
+              2.3896354,
+              48.8133975
+            ],
+            [
+              2.3896488,
+              48.8134284
+            ],
+            [
+              2.3896361,
+              48.8134413
+            ],
+            [
+              2.3896587,
+              48.8134513
+            ],
+            [
+              2.3896254,
+              48.8134889
+            ],
+            [
+              2.3896046,
+              48.8134793
+            ],
+            [
+              2.3895117,
+              48.8135809
+            ],
+            [
+              2.389437,
+              48.8136629
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

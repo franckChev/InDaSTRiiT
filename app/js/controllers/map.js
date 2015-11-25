@@ -13,7 +13,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", function($scope, $http)
 
     //---- mon cercle de recherche autour de ma position
     function onLocationFound(e) {
-        var radius = 500;
+        var radius = 1000;
 
         L.circle(e.latlng, radius).addTo(map);
     }
@@ -35,7 +35,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", function($scope, $http)
 
     $http({
         method: 'GET',
-        url: 'data/profiles.json'
+        url: 'data/shop.json'
     }).success(function(result) {
         var geojson = L.geoJson(result, {
             onEachFeature: function (feature, layer) {
