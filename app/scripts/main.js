@@ -38,7 +38,10 @@
     new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib}).addTo(map);
 
     
-    
+    query_overpass('[out:json];node(57.7,11.9,57.8,12.0)[amenity=bar];out;', function(error, data)
+        {
+            console.log(error, data);
+        });
 
     var xhr = new XMLHttpRequest;
     xhr.onreadystatechange = function() {
