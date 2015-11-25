@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "generator": "overpass-turbo",
   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
-  "timestamp": "2015-11-25T14:19:02Z",
+  "timestamp": "2015-11-25T14:41:02Z",
   "features": [
     {
       "type": "Feature",
@@ -116,6 +116,23 @@
         "coordinates": [
           2.3834415,
           48.8078326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/3830223631",
+      "properties": {
+        "@id": "node/3830223631",
+        "amenity": "pub",
+        "name": "Village Delice",
+        "source": "survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3906477,
+          48.8183873
         ]
       }
     }

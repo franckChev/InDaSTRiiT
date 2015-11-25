@@ -35,7 +35,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", function($scope, $http)
 
     $http({
         method: 'GET',
-        url: 'data/shop.json'
+        url: 'data/restaurant.json'
     }).success(function(result) {
         var geojson = L.geoJson(result, {
             onEachFeature: function (feature, layer) {
