@@ -2,13 +2,65 @@
   {
     "type": "Feature",
     "properties": {
-      "name": "Chris"
+      "name": "Chris",
+      "offre": 200,
+      "demande": 50,
+      "likePlaces": [{
+        "restaurants": 32,
+        "spectacle": 10
+      }],
+      "age": 25,
+      "nblikeMusique": 3,
+      "nblikeSport": 15,
+      "nblikeFilms": 2,
+      "catSociale": "etudiant",
+      "situation": "celibataire",
+      "events": [{
+        "concert": 1,
+        "manif": 0,
+        "soiree": 3,
+        "conference": 5,
+        "sport": 2
+        }]
     },
     "geometry": {
       "type": "Point",
       "coordinates": [
         2.392937,
         48.813948
+      ]
+    }
+  },
+
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Joe",
+      "offre": 20,
+      "demande": 150,
+      "likePlaces": [{
+        "restaurants": 1,
+        "spectacle": 1
+      }],
+      "age": 35,
+      "nblikeMusique": 45,
+      "nblikeSport": 1,
+      "nblikeFilms": 20,
+      "catSociale": "santé",
+      "situation": "marié",
+      "events": [{
+        "concert": 14,
+        "manif": 7,
+        "soiree": 1,
+        "conference": 8,
+        "sport": 5
+        }]
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2.393937,
+        48.813958
       ]
     }
   }

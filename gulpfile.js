@@ -97,7 +97,7 @@ gulp.task('wiredep', function () {
 });
 
 // Watch
-gulp.task('watch', ['connect', 'serve'], function () {
+gulp.task('watch', ['connect'/*, 'serve'*/], function () {
     // Watch for changes in `app` folder
     gulp.watch([
         'app/*.html',

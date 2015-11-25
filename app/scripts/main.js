@@ -17,7 +17,7 @@
 
     //---- mon cercle de recherche autour de ma position
     function onLocationFound(e) {
-    var radius = 100;
+    var radius = 1000;
 
     L.circle(e.latlng, radius).addTo(map);
     }
@@ -36,6 +36,9 @@
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
 
     new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib}).addTo(map);
+
+    
+    
 
     var xhr = new XMLHttpRequest;
     xhr.onreadystatechange = function() {
