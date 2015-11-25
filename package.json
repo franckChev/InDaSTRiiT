@@ -18,6 +18,10 @@
     "wiredep": "^1.4.4"
   },
   "dependencies": {
-  	"leaflet": "~0.7.7"
+    "angular": "^1.4.8",
+    "angular-animate": "^1.4.8",
+    "angular-aria": "^1.4.8",
+    "angular-material": "^0.11.4",
+    "leaflet": "~0.7.7"
   }
 }
