@@ -1,1 +1,1 @@
-var inDaStriit = angular.module('inDaStriit', []);
+var inDaStriit = angular.module('inDaStriit', ["ngMaterial"]);
