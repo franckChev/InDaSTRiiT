@@ -22,18 +22,19 @@
 <div class="notifications" ng-controller="NotificationsCtrl">
 </div>
 <header class="group">
-    <div class="appName">
+    <div class="    appName">
         InDaSTRiit
     </div>
 </header>
 <div class="map-application" ng-controller="MapCtrl">
-    <div id="map" class="map"></div>
+    <leaflet width="100%" height="100%" center="myPosition"></leaflet>
 </div>
 <script src="lib/scripts/angular.min.js"></script>
 <script src="lib/scripts/angular-aria.min.js"></script>
 <script src="lib/scripts/angular-animate.min.js"></script>
 <script src="lib/scripts/angular-material.min.js"></script>
 <script src="lib/scripts/leaflet.js"></script>
+<script src="lib/scripts/angular-leaflet-directive.min.js"></script>
 <script src="scripts/main.js"></script>
 <script src="js/controllers/map.js"></script>
 <script src="js/controllers/notifications.js"></script>

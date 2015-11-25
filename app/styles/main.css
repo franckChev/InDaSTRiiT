@@ -12,7 +12,6 @@
 }
 body,
 html {
-	font-family: Arial, sans-serif;
 	height: 100%;
 }
 .map {
@@ -22,9 +21,9 @@ html {
 
 .map-application {
 	height: 100%;
-	
+
 	padding-top: 50px;
-	
+
 }
 
 
