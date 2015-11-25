@@ -24,8 +24,9 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     }).success(function (result) {
         var geojson = L.geoJson(result, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(feature.properties.name);
-                layer.on("click", function()
+                var popup = layer.bindPopup(feature.properties.name);
+
+                popup.on("click",'.trigger', function()
                 {
                     alert = $mdDialog.alert({
                         title: 'Attention',
