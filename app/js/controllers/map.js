@@ -13,7 +13,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", function($scope, $http)
 
     //---- mon cercle de recherche autour de ma position
     function onLocationFound(e) {
-        var radius = 1000;
+        var radius = 500;
 
         L.circle(e.latlng, radius).addTo(map);
     }
