@@ -24,20 +24,22 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     }).success(function (result) {
         var geojson = L.geoJson(result, {
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(feature.properties.name);
-                layer.on("click", function()
-                {
-                    alert = $mdDialog.alert({
-                        title: 'Attention',
-                        content: 'This is an example of how easy dialogs can be!',
-                        ok: 'Close'
+                layer.on("click", function() {
+                    $mdDialog.show({
+                        clickOutsideToClose: true,
+                        scope: $scope,        // use parent scope in template
+                        preserveScope: true,  // do not forget this if use parent scope
+                        // Since GreetingController is instantiated with ControllerAs syntax
+                        // AND we are passing the parent '$scope' to the dialog, we MUST
+                        // use 'vm.<xxx>' in the template markup
+                        templateUrl: 'partials/profilePopup.html',
+                        controller: function DialogController($scope, $mdDialog) {
+                            $scope.closeDialog = function () {
+                                $mdDialog.hide();
+                            }
+                        }
                     });
-                    $mdDialog
-                        .show( alert )
-                        .finally(function() {
-                            alert = undefined;
-                        });
-                })
+                });
             }
         });
         leafletData.getMap().then(function (map) {
