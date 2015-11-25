@@ -16,12 +16,6 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         defaults: {
             scrollWheelZoom: false
         },
-        events: {
-            map: {
-                enable: ['drag', 'click'],
-                logic: 'emit'
-            }
-        }
 
     });
     $http({
@@ -30,9 +24,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     }).success(function (result) {
         var geojson = L.geoJson(result, {
             onEachFeature: function (feature, layer) {
-                $scope[feature.properties.name] = feature.properties;
-                layer.on("click", function(e) {
-                    $scope.current = $scope[e.target.feature.properties.name];
+                layer.on("click", function() {
                     $mdDialog.show({
                         clickOutsideToClose: true,
                         scope: $scope,        // use parent scope in template
