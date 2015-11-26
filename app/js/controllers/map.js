@@ -20,7 +20,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         },
         sport : {
             score : 0,
-            amenities : ["gym", ]
+            amenities : ["gym", "" ]
         }
 
     };
@@ -81,7 +81,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
          });
      });
 
-    
+
     $http.get('http://overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node["amenity"](around:1000,48.8131354,2.393143);way["amenity"](around:1000,48.8131354,2.393143);relation["amenity"](around:1000,48.8131354,2.393143););out body;>;out skel qt;').success(function (result) {
         var data = osmtogeojson(result);
         for (item in data.features)
