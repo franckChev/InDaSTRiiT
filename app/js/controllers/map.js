@@ -1,39 +1,45 @@
-inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog", "GeoJSONFactory", function ($scope, $http, leafletData, $mdDialog, GeoJSONFactory) {
+inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog", "GeoJSONFactory", "my_widget", function ($scope, $http, leafletData, $mdDialog, GeoJSONFactory, my_widget) {
     /* Map Init */
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-    $scope.scoring = {
-        restaurant : {
-            score : 0,
-            amenities : ["restaurant", "fast_food"],
-            shop : [""]
-        },
-        bar : {
-            score : 0,
-            amenities : ["bar", "cafe", "pub"],
-            shop : ["alcohol", "wine", "beverages"]
-        },
-        music : {
-            score : 0,
-            amenities : ["nightclub"],
-            shop : ["music", "musical_instruments"]
-        },
-        sport : {
-            score : 0,
-            amenities : ["gym"],
-            shop : ["sports"]
-        },
-        films : {
-            score : 0,
-            amenities : ["cinema"],
-            shop : ["video"]
-        },
-        books : {
-            score : 0,
-            amenities : ["library", "public_bookcase"]
-        }
+    $scope.quartier = my_widget.initScore;
 
-    };
+    // my_widget.getUserScore(function(userScore)
+    // {
+    //     $scope.user = userScore;
+    //     console.log($scope.user);
+    // })
+
+    $scope.user = [
+    {
+        "type": "Feature",
+        "properties": {
+          "name": "Bob",
+          "offre": 200,
+          "demande": 50,
+          "age": 18,
+          "genre": "h",
+          "nbLikes": [{
+            "resto": 2,
+            "bars": 25,
+            "bands": 3,
+            "sports": 48,
+            "films": 0,
+            "books": 78
+          }],
+          "catSociale": "etudiant",
+          "situation": "celibataire",
+          "events": [{
+            "concert": 0,
+            "manif": 0,
+            "soiree": 5,
+            "conference": 1,
+            "sport": 14
+            }]
+        }
+      }
+    ];
+
 
     angular.extend($scope, {
         myPosition: {
@@ -63,6 +69,8 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     leafletData.getMap().then(function (map) {
         map.addLayer(circle);
     });
+    //get score of neighboorhood
+    my_widget.completeScore($scope);
     /* Retrieve profiles */
     GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
         $scope[feature.properties.name] = feature.properties;
@@ -79,33 +87,33 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
                     }
                 }
             });
-         });
-     });
+        });
+    });
 
-
-    $http.get('http://overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node["amenity"](around:1000,48.8131354,2.393143);way["amenity"](around:1000,48.8131354,2.393143);relation["amenity"](around:1000,48.8131354,2.393143););out body;>;out skel qt;').success(function (result) {
-        var data = osmtogeojson(result);
-        for (item in data.features)
-        {
-                if (data.features[item].properties !== undefined)
-                {
-                    var tags = data.features[item].properties.tags;
-                    for (category in $scope.scoring) {
-                        if ($scope.scoring[category].amenities.indexOf(tags.amenity) !== -1)
-                            $scope.scoring[category].score++;
-                    }
+    
+    // $http.get('http://overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node["amenity"](around:1000,'+ $scope.myPosition.lat +','+ $scope.myPosition.lng +');way["amenity"](around:1000,48.8131354,2.393143);relation["amenity"](around:1000,48.8131354,2.393143););out body;>;out skel qt;').success(function (result) {
+    //     var data = osmtogeojson(result);
+    //     for (item in data.features)
+    //     {
+    //             if (data.features[item].properties !== undefined)
+    //             {
+    //                 var tags = data.features[item].properties.tags;
+    //                 for (category in $scope.scoring) {
+    //                     if ($scope.scoring[category].amenities.indexOf(tags.amenity) !== -1)
+    //                         $scope.scoring[category].score++;
+    //                 }
                     
-                }
-        }
+    //             }
+    //     }
             
         
-        console.log($scope.scoring);
+    console.log($scope.quartier);
         // leafletData.getMap().then(function (map) {
         //     console.log(geojson);
         //     map.addLayer(geojson);
         // });
 
-    });
+   
     /* Retrieve POI */
     //GeoJSONFactory.applyGeoJSON("restaurant", function (feature, layer) {
     //    $scope.score.restaurant++;
