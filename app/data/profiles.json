@@ -40,10 +40,6 @@
       "name": "Joe",
       "offre": 20,
       "demande": 150,
-      "likePlaces": [{
-        "restaurants": 1,
-        "spectacle": 1
-      }],
       "age": 35,
       "genre": "h",
         "nbLikes": [{
