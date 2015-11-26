@@ -2,6 +2,28 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     /* Map Init */
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    $scope.categories = {
+        restaurant : {
+            score : 0,
+            amenities : ["restaurant", "fast_food"],
+            shop : [""]
+        },
+        bar : {
+            score : 0,
+            amenities : ["bar", "cafe", "pub"],
+            shop : ["alcohol", "wine", "beverages"]
+        },
+        music : {
+            score : 0,
+            amenities : [""],
+            shop : ["music", "musical_instruments"]
+        },
+        sport : {
+            score : 0,
+            amenities : ["gym", ]
+        }
+
+    };
     $scope.score = {
         restaurant: 0,
         bar: 0,
@@ -41,18 +63,44 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         map.addLayer(circle);
     });
     /* Retrieve profiles */
+    GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
++        $scope[feature.properties.name] = feature.properties;
++        layer.on("click", function (e) {
++            $scope.current = $scope[e.target.feature.properties.name];
++            $mdDialog.show({
++                clickOutsideToClose: true,
++                scope: $scope,
++                preserveScope: true,
++                templateUrl: 'partials/profilePopup.html',
++                controller: function DialogController($scope, $mdDialog) {
++                    $scope.closeDialog = function () {
++                        $mdDialog.hide();
++                    }
++                }
++            });
+         });
+     });
 
-    $http.get('http://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A25%5D%3B%28node%5B%22amenity%22%3D%22restaurant%22%5D%2848%2E81054471412941%2C2%2E389000654220581%2C48%2E81738363757687%2C2%2E3999547958374023%29%3Bway%5B%22amenity%22%3D%22restaurant%22%5D%2848%2E81054471412941%2C2%2E389000654220581%2C48%2E81738363757687%2C2%2E3999547958374023%29%3Brelation%5B%22amenity%22%3D%22restaurant%22%5D%2848%2E81054471412941%2C2%2E389000654220581%2C48%2E81738363757687%2C2%2E3999547958374023%29%3B%29%3Bout%20body%3B%3E%3Bout%20skel%20qt%3B%0A').success(function (result) {
+    
+    $http.get('http://overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node["amenity"](around:1000,48.8131354,2.393143);way["amenity"](around:1000,48.8131354,2.393143);relation["amenity"](around:1000,48.8131354,2.393143););out body;>;out skel qt;').success(function (result) {
         var data = osmtogeojson(result);
-        var geojson = L.geoJson(data, {
-            onEachFeature: function (feature, layer) {
+        for (item in data.features)
+        {
+                if (data.features[item].properties !== undefined)
+                {
+                    var tags = data.features[item].properties.tags;
+                    if ($scope.bouffe.indexOf(tags.amenity) !== -1)
+                        $scope.score.restaurant++;
 
-            }
-        });
-        leafletData.getMap().then(function (map) {
-            console.log(geojson);
-            map.addLayer(geojson);
-        });
+                }
+        }
+            
+        
+        console.log($scope.score);
+        // leafletData.getMap().then(function (map) {
+        //     console.log(geojson);
+        //     map.addLayer(geojson);
+        // });
 
     });
     /* Retrieve POI */
