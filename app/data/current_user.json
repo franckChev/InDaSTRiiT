@@ -1,0 +1,29 @@
+[
+{
+    "type": "Feature",
+    "properties": {
+      "name": "Bob",
+      "offre": 200,
+      "demande": 50,
+      "age": 18,
+      "genre": "h",
+      "nbLikes": [{
+        "resto": 2,
+        "bars": 25,
+        "bands": 3,
+        "sports": 48,
+        "films": 0,
+        "books": 78
+      }],
+      "catSociale": "etudiant",
+      "situation": "celibataire",
+      "events": [{
+        "concert": 0,
+        "manif": 0,
+        "soiree": 5,
+        "conference": 1,
+        "sport": 14
+        }]
+    }
+  }
+]
