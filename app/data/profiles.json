@@ -5,14 +5,16 @@
       "name": "Chris",
       "offre": 200,
       "demande": 50,
-      "likePlaces": [{
-        "restaurants": 32,
-        "spectacle": 10
-      }],
       "age": 25,
-      "nblikeMusique": 3,
-      "nblikeSport": 15,
-      "nblikeFilms": 2,
+      "genre": "h",
+      "nbLikes": [{
+        "resto": 32,
+        "bars": 2,
+        "bands": 3,
+        "sports": 15,
+        "films": 2,
+        "books": 1
+      }],
       "catSociale": "etudiant",
       "situation": "celibataire",
       "events": [{
@@ -38,14 +40,16 @@
       "name": "Joe",
       "offre": 20,
       "demande": 150,
-      "likePlaces": [{
-        "restaurants": 1,
-        "spectacle": 1
-      }],
       "age": 35,
-      "nblikeMusique": 45,
-      "nblikeSport": 1,
-      "nblikeFilms": 20,
+      "genre": "h",
+        "nbLikes": [{
+        "resto": 1,
+        "bar": 0,
+        "bands": 45,
+        "sports": 1,
+        "films": 20,
+        "books": 12
+      }],
       "catSociale": "santé",
       "situation": "marié",
       "events": [{

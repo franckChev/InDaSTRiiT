@@ -1,0 +1,572 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2015-11-25T14:20:02Z",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "node/608636520",
+      "properties": {
+        "@id": "node/608636520",
+        "amenity": "restaurant",
+        "name": "La-bas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3920226,
+          48.8072563
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/608636603",
+      "properties": {
+        "@id": "node/608636603",
+        "amenity": "restaurant",
+        "name": "Le Pretext"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3913872,
+          48.8074227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/687218454",
+      "properties": {
+        "@id": "node/687218454",
+        "amenity": "restaurant",
+        "name": "Café de la Mairie",
+        "wheelchair": "limited",
+        "wheelchair:description": "Toilettes non accessibles"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3863423,
+          48.8121283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/687218521",
+      "properties": {
+        "@id": "node/687218521",
+        "amenity": "restaurant",
+        "name": "Ivry bar",
+        "tourism": "hotel",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3884401,
+          48.8105676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/687218546",
+      "properties": {
+        "@id": "node/687218546",
+        "amenity": "restaurant",
+        "cuisine": "kebab",
+        "name": "L'escale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3911974,
+          48.8108414
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1677615620",
+      "properties": {
+        "@id": "node/1677615620",
+        "amenity": "restaurant",
+        "cuisine": "international",
+        "name": "Guinguette du Monde"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3897357,
+          48.8147908
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2137670276",
+      "properties": {
+        "@id": "node/2137670276",
+        "amenity": "restaurant",
+        "bar": "yes",
+        "brewery": "yes",
+        "name": "La Petite Auberge",
+        "note:fr": "Bar, Brasserie, Restaurant",
+        "source": "survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3804322,
+          48.8099878
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2203217278",
+      "properties": {
+        "@id": "node/2203217278",
+        "amenity": "restaurant",
+        "contact:phone": "+33146581818",
+        "contact:website": "http://www.junmai.fr",
+        "cuisine": "japanese",
+        "name": "Junmai Sushi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3911502,
+          48.8080775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2225340694",
+      "properties": {
+        "@id": "node/2225340694",
+        "amenity": "restaurant",
+        "cuisine": "franco-oriental",
+        "name": "Auberge de l'Europe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3912341,
+          48.8120345
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2370870290",
+      "properties": {
+        "@id": "node/2370870290",
+        "addr:city": "Ivry-sur-Seine",
+        "addr:housenumber": "1",
+        "addr:postcode": "94200",
+        "addr:street": "Promenée Marat",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "name": "Brasserie Le Marat",
+        "source:amenity": "survey",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.384031,
+          48.8108907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435592304",
+      "properties": {
+        "@id": "node/2435592304",
+        "amenity": "restaurant",
+        "cuisine": "chinese",
+        "source": "survey 2013-08-29"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3941887,
+          48.8159398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435687388",
+      "properties": {
+        "@id": "node/2435687388",
+        "amenity": "restaurant",
+        "cuisine": "turkish",
+        "name": "Bosphore",
+        "source": "survey 2013-08-28",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3986584,
+          48.8173492
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435687390",
+      "properties": {
+        "@id": "node/2435687390",
+        "amenity": "restaurant",
+        "cuisine": "indian",
+        "name": "K'si",
+        "source": "survey 2013-08-28",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3985598,
+          48.8177668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435687391",
+      "properties": {
+        "@id": "node/2435687391",
+        "amenity": "restaurant",
+        "cuisine": "turkish",
+        "name": "Firat",
+        "source": "survey 2013-08-28",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3987282,
+          48.8176337
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435687394",
+      "properties": {
+        "@id": "node/2435687394",
+        "amenity": "restaurant",
+        "cuisine": "asian",
+        "name": "Khao Prat",
+        "source": "survey 2013-08-28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3978145,
+          48.8179037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435687395",
+      "properties": {
+        "@id": "node/2435687395",
+        "amenity": "restaurant",
+        "cuisine": "Mésopotamie_et_Anatolie",
+        "name": "L'Adresse",
+        "source": "survey 2013-08-28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3982972,
+          48.8179883
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435687401",
+      "properties": {
+        "@id": "node/2435687401",
+        "amenity": "restaurant",
+        "name": "Saveurs du Brésil",
+        "source": "survey 2013-08-28",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3994601,
+          48.8166547
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435687404",
+      "properties": {
+        "@id": "node/2435687404",
+        "amenity": "restaurant",
+        "cuisine": "japanese",
+        "name": "Yo'k sushi",
+        "source": "survey 2013-08-28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3980529,
+          48.8178585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435687433",
+      "properties": {
+        "@id": "node/2435687433",
+        "amenity": "restaurant",
+        "cuisine": "Franco_Portugaise",
+        "name": "Provence Café",
+        "source": "survey 2013-08-28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3984534,
+          48.8175265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435687439",
+      "properties": {
+        "@id": "node/2435687439",
+        "amenity": "restaurant",
+        "name": "Au bon goût",
+        "source": "survey 2013-08-28",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3971624,
+          48.8175533
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2435687461",
+      "properties": {
+        "@id": "node/2435687461",
+        "amenity": "restaurant",
+        "cuisine": "japanese",
+        "name": "Sushi Edokko",
+        "source": "survey 2013-08-28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3978986,
+          48.8183348
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2692580363",
+      "properties": {
+        "@id": "node/2692580363",
+        "addr:city": "Ivry-sur-Seine",
+        "addr:housenumber": "25",
+        "addr:postcode": "94200",
+        "addr:street": "Rue Ledru-Rollin",
+        "amenity": "restaurant",
+        "cuisine": "serbe",
+        "name": "Markov Konak \"La ferme\" (serbe)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3835571,
+          48.8160406
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2811105174",
+      "properties": {
+        "@id": "node/2811105174",
+        "addr:city": "Ivry-sur-Seine",
+        "addr:housenumber": "8",
+        "addr:postcode": "94200",
+        "addr:street": "Promenée Marat",
+        "amenity": "restaurant",
+        "cuisine": "lebanese",
+        "name": "Al Dabka",
+        "smoking": "outside",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3842,
+          48.8107821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2818001920",
+      "properties": {
+        "@id": "node/2818001920",
+        "addr:housenumber": "27",
+        "addr:street": "Promenée Marat",
+        "amenity": "restaurant",
+        "capacity": "40",
+        "cuisine": "italian",
+        "name": "Pasta Pazza",
+        "smoking": "no",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3844119,
+          48.811206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2818042213",
+      "properties": {
+        "@id": "node/2818042213",
+        "addr:housenumber": "3",
+        "addr:street": "Rue Robespierre",
+        "amenity": "restaurant",
+        "cuisine": "french",
+        "name": "Chez Alain",
+        "smoking": "no",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3843958,
+          48.8106832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2818572754",
+      "properties": {
+        "@id": "node/2818572754",
+        "amenity": "restaurant",
+        "cuisine": "african",
+        "name": "Karibu",
+        "opening_hours": "Mo-Sa 09:00-22:30;Su 15:00-23:00",
+        "phone": "01 46 72 75 06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3844749,
+          48.8110948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2818572757",
+      "properties": {
+        "@id": "node/2818572757",
+        "amenity": "restaurant",
+        "cuisine": "french",
+        "name": "Planète Terroir",
+        "phone": "01 46 70 83 79",
+        "smoking": "no",
+        "website": "planete-terroir.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3844709,
+          48.8106223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/3048863896",
+      "properties": {
+        "@id": "node/3048863896",
+        "amenity": "restaurant",
+        "cuisine": "pizza",
+        "name": "Casa Sicilia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3989984,
+          48.8173963
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/3561233036",
+      "properties": {
+        "@id": "node/3561233036",
+        "addr:city": "Ivry sur Seine",
+        "addr:housenumber": "41",
+        "addr:postcode": "94200",
+        "addr:street": "Rue Marat",
+        "amenity": "restaurant",
+        "cuisine": "japanese",
+        "name": "Tokyo Sushi",
+        "phone": "01 43 90 03 97"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3867051,
+          48.8092055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/3599735434",
+      "properties": {
+        "@id": "node/3599735434",
+        "amenity": "restaurant",
+        "cuisine": "couscous",
+        "name": "Le Roi du Couscous",
+        "source": "survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3969105,
+          48.8144474
+        ]
+      }
+    }
+  ]
+}

@@ -1,2 +1,3 @@
-var inDaStriit = angular.module('inDaStriit', ["ngMaterial"]);
-lol("hihi");
+var inDaStriit = angular.module('inDaStriit', ["ngMaterial", "leaflet-directive"]);
+
+L.Icon.Default.imagePath = 'images/';

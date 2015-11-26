@@ -1,0 +1,140 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2015-11-25T14:41:02Z",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "node/687218426",
+      "properties": {
+        "@id": "node/687218426",
+        "amenity": "bar",
+        "name": "Le metropolitain",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3841166,
+          48.8115398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2202938764",
+      "properties": {
+        "@id": "node/2202938764",
+        "amenity": "bar",
+        "name": "Café aux sports"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3906746,
+          48.8117474
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2202938765",
+      "properties": {
+        "@id": "node/2202938765",
+        "amenity": "bar",
+        "name": "Le Saint-Just"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3903715,
+          48.8115778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2895396562",
+      "properties": {
+        "@id": "node/2895396562",
+        "amenity": "bar",
+        "name": "Bar Nouveau Brooklyn (BNB)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3828193,
+          48.8135907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/3505695888",
+      "properties": {
+        "@id": "node/3505695888",
+        "addr:housenumber": "11",
+        "amenity": "bar",
+        "name": "Le terminus",
+        "shop": "tobacco"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3833291,
+          48.8113607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/3505721392",
+      "properties": {
+        "@id": "node/3505721392",
+        "amenity": "bar",
+        "name": "Chez Pat",
+        "smoking": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3838734,
+          48.8119395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/3824295710",
+      "properties": {
+        "@id": "node/3824295710",
+        "amenity": "bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3834415,
+          48.8078326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/3830223631",
+      "properties": {
+        "@id": "node/3830223631",
+        "amenity": "pub",
+        "name": "Village Delice",
+        "source": "survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3906477,
+          48.8183873
+        ]
+      }
+    }
+  ]
+}
