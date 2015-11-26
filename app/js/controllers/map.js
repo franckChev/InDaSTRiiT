@@ -2,6 +2,16 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     /* Map Init */
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    $scope.score = {
+        restaurant : 0,
+        bar : 0,
+        cinema : 0,
+        emergency : 0,
+        historic : 0,
+        museum : 0,
+        shop : 0,
+        sport_center : 0
+    };
     angular.extend($scope, {
         myPosition: {
             lat: 48.8139878,
@@ -50,18 +60,23 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     });
     /* Retrieve POI */
     GeoJSONFactory.applyGeoJSON("restaurant", function (feature, layer) {
+        $scope.score.restaurant++;
         layer.bindPopup(feature.properties.name);
     });
     GeoJSONFactory.applyGeoJSON("bar", function (feature, layer) {
+        $scope.score.bar++;
         layer.bindPopup(feature.properties.name);
     });
     GeoJSONFactory.applyGeoJSON("cinema", function (feature, layer) {
+        $scope.score.cinema++;
         layer.bindPopup(feature.properties.name);
     });
     GeoJSONFactory.applyGeoJSON("emergency", function (feature, layer) {
+        $scope.score.emergency++;
         layer.bindPopup(feature.properties.name);
     });
     GeoJSONFactory.applyGeoJSON("historic", function (feature, layer) {
+        $scope.score.historic++;
         layer.bindPopup(feature.properties.name);
     });
 }]);
