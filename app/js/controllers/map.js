@@ -31,24 +31,36 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         map.addLayer(circle);
     });
     /* Retrieve profiles */
-    $http.get("http://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A25%5D%3B%28node%5B%22amenity%22%5D%28around%3A1000%2C48%2E8131354%2C2%2E393143%29%3Bway%5B%22amenity%22%5D%28around%3A1000%2C48%2E8131354%2C2%2E393143%29%3Brelation%5B%22amenity%22%5D%28around%3A1000%2C48%2E8131354%2C2%2E393143%29%3B%29%3Bout%20body%3B%3E%3Bout%20skel%20qt%3B%0A").success(function (result) {
-        console.log(result);
+    $http.get('http://overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node["amenity"](around:1000,48.8131354,2.393143);way["amenity"](around:1000,48.8131354,2.393143);relation["amenity"](around:1000,48.8131354,2.393143););out body;>;out skel qt;').success(function (result) {
+        console.log(result, typeof(result));
+
+        // var geojson = L.geoJson(result, { onEachFeature : function(feature, layer) {}});
+        // leafletData.getMap().then(function (map) {
+        //      map.addLayer(geojson);
+        //  });
+        var post_box = result.elements.filter(function (element, index, array) {
+            if (element !== undefined && element.tags !== undefined && element.tags.amenity !== undefined)
+                return (element.tags.amenity == "post_box");
+            else
+                return false;
+        });
+        console.log(post_box.length);
 
     });
     /* Retrieve POI */
-    GeoJSONFactory.applyGeoJSON("restaurant", function (feature, layer) {
-        layer.bindPopup(feature.properties.name);
-    });
-    GeoJSONFactory.applyGeoJSON("bar", function (feature, layer) {
-        layer.bindPopup(feature.properties.name);
-    });
-    GeoJSONFactory.applyGeoJSON("cinema", function (feature, layer) {
-        layer.bindPopup(feature.properties.name);
-    });
-    GeoJSONFactory.applyGeoJSON("emergency", function (feature, layer) {
-        layer.bindPopup(feature.properties.name);
-    });
-    GeoJSONFactory.applyGeoJSON("historic", function (feature, layer) {
-        layer.bindPopup(feature.properties.name);
-    });
+    // GeoJSONFactory.applyGeoJSON("restaurant", function (feature, layer) {
+    //     layer.bindPopup(feature.properties.name);
+    // });
+    // GeoJSONFactory.applyGeoJSON("bar", function (feature, layer) {
+    //     layer.bindPopup(feature.properties.name);
+    // });
+    // GeoJSONFactory.applyGeoJSON("cinema", function (feature, layer) {
+    //     layer.bindPopup(feature.properties.name);
+    // });
+    // GeoJSONFactory.applyGeoJSON("emergency", function (feature, layer) {
+    //     layer.bindPopup(feature.properties.name);
+    // });
+    // GeoJSONFactory.applyGeoJSON("historic", function (feature, layer) {
+    //     layer.bindPopup(feature.properties.name);
+    // });
 }]);
