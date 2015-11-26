@@ -1,4 +1,5 @@
-inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog", function ($scope, $http, leafletData, $mdDialog) {
+inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog", "GeoJSONFactory", function ($scope, $http, leafletData, $mdDialog, GeoJSONFactory) {
+    /* Map Init */
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     angular.extend($scope, {
@@ -24,34 +25,43 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         }
 
     });
-    $http({
-        method: 'GET',
-        url: 'data/profiles.json'
-    }).success(function (result) {
-        var geojson = L.geoJson(result, {
-            onEachFeature: function (feature, layer) {
-                $scope[feature.properties.name] = feature.properties;
-                layer.on("click", function(e) {
-                    $scope.current = $scope[e.target.feature.properties.name];
-                    $mdDialog.show({
-                        clickOutsideToClose: true,
-                        scope: $scope,        // use parent scope in template
-                        preserveScope: true,  // do not forget this if use parent scope
-                        // Since GreetingController is instantiated with ControllerAs syntax
-                        // AND we are passing the parent '$scope' to the dialog, we MUST
-                        // use 'vm.<xxx>' in the template markup
-                        templateUrl: 'partials/profilePopup.html',
-                        controller: function DialogController($scope, $mdDialog) {
-                            $scope.closeDialog = function () {
-                                $mdDialog.hide();
-                            }
-                        }
-                    });
-                });
-            }
+    console.log(leafletData);
+    var circle = L.circle([$scope.myPosition.lat, $scope.myPosition.lng], 100);
+    leafletData.getMap().then(function (map) {
+        map.addLayer(circle);
+    });
+    /* Retrieve profiles */
+    GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
+        $scope[feature.properties.name] = feature.properties;
+        layer.on("click", function (e) {
+            $scope.current = $scope[e.target.feature.properties.name];
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'partials/profilePopup.html',
+                controller: function DialogController($scope, $mdDialog) {
+                    $scope.closeDialog = function () {
+                        $mdDialog.hide();
+                    }
+                }
+            });
         });
-        leafletData.getMap().then(function (map) {
-            map.addLayer(geojson);
-        });
+    });
+    /* Retrieve POI */
+    GeoJSONFactory.applyGeoJSON("restaurant", function (feature, layer) {
+        layer.bindPopup(feature.properties.name);
+    });
+    GeoJSONFactory.applyGeoJSON("bar", function (feature, layer) {
+        layer.bindPopup(feature.properties.name);
+    });
+    GeoJSONFactory.applyGeoJSON("cinema", function (feature, layer) {
+        layer.bindPopup(feature.properties.name);
+    });
+    GeoJSONFactory.applyGeoJSON("emergency", function (feature, layer) {
+        layer.bindPopup(feature.properties.name);
+    });
+    GeoJSONFactory.applyGeoJSON("historic", function (feature, layer) {
+        layer.bindPopup(feature.properties.name);
     });
 }]);
