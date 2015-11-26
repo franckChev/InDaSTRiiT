@@ -31,22 +31,9 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         map.addLayer(circle);
     });
     /* Retrieve profiles */
-    GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
-        $scope[feature.properties.name] = feature.properties;
-        layer.on("click", function (e) {
-            $scope.current = $scope[e.target.feature.properties.name];
-            $mdDialog.show({
-                clickOutsideToClose: true,
-                scope: $scope,
-                preserveScope: true,
-                templateUrl: 'partials/profilePopup.html',
-                controller: function DialogController($scope, $mdDialog) {
-                    $scope.closeDialog = function () {
-                        $mdDialog.hide();
-                    }
-                }
-            });
-        });
+    $http.get("http://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A25%5D%3B%28node%5B%22amenity%22%5D%28around%3A1000%2C48%2E8131354%2C2%2E393143%29%3Bway%5B%22amenity%22%5D%28around%3A1000%2C48%2E8131354%2C2%2E393143%29%3Brelation%5B%22amenity%22%5D%28around%3A1000%2C48%2E8131354%2C2%2E393143%29%3B%29%3Bout%20body%3B%3E%3Bout%20skel%20qt%3B%0A").success(function (result) {
+        console.log(result);
+
     });
     /* Retrieve POI */
     GeoJSONFactory.applyGeoJSON("restaurant", function (feature, layer) {
