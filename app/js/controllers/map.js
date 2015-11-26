@@ -2,7 +2,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     /* Map Init */
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-    $scope.categories = {
+    $scope.scoring = {
         restaurant : {
             score : 0,
             amenities : ["restaurant", "fast_food"],
@@ -15,25 +15,26 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         },
         music : {
             score : 0,
-            amenities : [""],
+            amenities : ["nightclub"],
             shop : ["music", "musical_instruments"]
         },
         sport : {
             score : 0,
-            amenities : ["gym", ""]
+            amenities : ["gym"],
+            shop : ["sports"]
+        },
+        films : {
+            score : 0,
+            amenities : ["cinema"],
+            shop : ["video"]
+        },
+        books : {
+            score : 0,
+            amenities : ["library", "public_bookcase"]
         }
 
     };
-    $scope.score = {
-        restaurant: 0,
-        bar: 0,
-        cinema: 0,
-        emergency: 0,
-        historic: 0,
-        museum: 0,
-        shop: 0,
-        sport_center: 0
-    };
+
     angular.extend($scope, {
         myPosition: {
             lat: 48.8139878,
@@ -89,14 +90,16 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
                 if (data.features[item].properties !== undefined)
                 {
                     var tags = data.features[item].properties.tags;
-                    if ($scope.bouffe.indexOf(tags.amenity) !== -1)
-                        $scope.score.restaurant++;
-
+                    for (category in $scope.scoring) {
+                        if ($scope.scoring[category].amenities.indexOf(tags.amenity) !== -1)
+                            $scope.scoring[category].score++;
+                    }
+                    
                 }
         }
             
         
-        console.log($scope.score);
+        console.log($scope.scoring);
         // leafletData.getMap().then(function (map) {
         //     console.log(geojson);
         //     map.addLayer(geojson);
@@ -108,7 +111,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     //    $scope.score.restaurant++;
     //    layer.bindPopup(feature.properties.name);
     //});
-    GeoJSONFactory.applyGeoJSON("bar", function (feature, layer) {
+   /* GeoJSONFactory.applyGeoJSON("bar", function (feature, layer) {
         $scope.score.bar++;
         layer.bindPopup(feature.properties.name);
     });
@@ -123,6 +126,6 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     GeoJSONFactory.applyGeoJSON("historic", function (feature, layer) {
         $scope.score.historic++;
         layer.bindPopup(feature.properties.name);
-    });
+    });*/
 
 }]);
