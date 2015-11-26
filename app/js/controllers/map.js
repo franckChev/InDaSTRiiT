@@ -20,7 +20,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         },
         sport : {
             score : 0,
-            amenities : ["gym", "" ]
+            amenities : ["gym", ""]
         }
 
     };
@@ -64,20 +64,20 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     });
     /* Retrieve profiles */
     GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
-+        $scope[feature.properties.name] = feature.properties;
-+        layer.on("click", function (e) {
-+            $scope.current = $scope[e.target.feature.properties.name];
-+            $mdDialog.show({
-+                clickOutsideToClose: true,
-+                scope: $scope,
-+                preserveScope: true,
-+                templateUrl: 'partials/profilePopup.html',
-+                controller: function DialogController($scope, $mdDialog) {
-+                    $scope.closeDialog = function () {
-+                        $mdDialog.hide();
-+                    }
-+                }
-+            });
+        $scope[feature.properties.name] = feature.properties;
+        layer.on("click", function (e) {
+            $scope.current = $scope[e.target.feature.properties.name];
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'partials/profilePopup.html',
+                controller: function DialogController($scope, $mdDialog) {
+                    $scope.closeDialog = function () {
+                        $mdDialog.hide();
+                    }
+                }
+            });
          });
      });
 
