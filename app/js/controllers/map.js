@@ -69,26 +69,30 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     leafletData.getMap().then(function (map) {
         map.addLayer(circle);
     });
-    //get score of neighboorhood
-    my_widget.completeScore($scope);
-    /* Retrieve profiles */
-    GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
-        $scope[feature.properties.name] = feature.properties;
-        layer.on("click", function (e) {
-            $scope.current = $scope[e.target.feature.properties.name];
-            $mdDialog.show({
-                clickOutsideToClose: true,
-                scope: $scope,
-                preserveScope: true,
-                templateUrl: 'partials/profilePopup.html',
-                controller: function DialogController($scope, $mdDialog) {
-                    $scope.closeDialog = function () {
-                        $mdDialog.hide();
+    //get score
+    var score = my_widget.computeScore($scope.user, $scope, function(score){
+        GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
+            $scope[feature.properties.name] = feature.properties;
+            layer.on("click", function (e) {
+                $scope.current = $scope[e.target.feature.properties.name];
+                $mdDialog.show({
+                    clickOutsideToClose: true,
+                    scope: $scope,
+                    preserveScope: true,
+                    templateUrl: 'partials/profilePopup.html',
+                    controller: function DialogController($scope, $mdDialog) {
+                        $scope.closeDialog = function () {
+                            $mdDialog.hide();
+                        }
                     }
-                }
+                });
             });
         });
+        console.log("score", score);
     });
+    
+    /* Retrieve profiles */
+    
 
     
     // $http.get('http://overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node["amenity"](around:1000,'+ $scope.myPosition.lat +','+ $scope.myPosition.lng +');way["amenity"](around:1000,48.8131354,2.393143);relation["amenity"](around:1000,48.8131354,2.393143););out body;>;out skel qt;').success(function (result) {
