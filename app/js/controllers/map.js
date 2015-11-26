@@ -73,6 +73,9 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
                 preserveScope: true,
                 templateUrl: 'partials/profilePopup.html',
                 controller: function DialogController($scope, $mdDialog) {
+
+
+
                     $scope.closeDialog = function () {
                         $mdDialog.hide();
                     }
