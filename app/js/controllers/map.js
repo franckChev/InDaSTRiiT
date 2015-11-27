@@ -1,14 +1,20 @@
-inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog", "GeoJSONFactory", "my_widget", "$rootScope", function ($scope, $http, leafletData, $mdDialog, GeoJSONFactory, my_widget, $rootScope) {
+inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog", "GeoJSONFactory", "ScoringFactory", "$rootScope", function ($scope, $http, leafletData, $mdDialog, GeoJSONFactory, ScoringFactory, $rootScope) {
     /* Map Init */
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-    $scope.quartier = my_widget.initScore;
+    $scope.quartier = ScoringFactory.initScore;
 
-    // my_widget.getUserScore(function(userScore)
+    // ScoringFactory.getUserScore(function(userScore)
     // {
     //     $scope.user = userScore;
     //     console.log($scope.user);
     // })
+    
+    var looking_for_services = true;
+    if (looking_for_services)
+    {
+        $rootScope.$broadcast("getServicesProviders", {arg : "oki"});
+    }
 
     $scope.user = [
     {
@@ -71,8 +77,8 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     });
 
     //get score
-    var score = my_widget.computeScore($scope.user, $scope, function(score){
-        if (score > 4) {
+    var score = ScoringFactory.computeScore($scope.user, $scope, function(score){
+        if (score > 4 && !looking_for_services) {
             console.log("Create Notification");
             $rootScope.$broadcast("createNotification", {message : "Ce quartier peut vous intéresser !"});
             GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
