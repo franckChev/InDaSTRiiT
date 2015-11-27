@@ -17,23 +17,57 @@
     <link rel="stylesheet" href="lib/styles/leaflet.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="shortcut icon" href="/favicon.ico">
-
 </head>
 <body ng-app="inDaStriit">
-<div class="notifications" ng-controller="NotificationsCtrl">
+<!--<div class="notifications" ng-controller="NotificationsCtrl">-->
+
+<div ng-controller="NotificationsCtrl">
+<div layout-fill="" layout="column" class="inset toastdemoBasicUsage" ng-cloak="" >
+
+    <div layout="row" layout-sm="column" layout-align="space-around">
+      <div style="width:50px"></div>
+      <md-button ng-click="showSimpleToast()">
+        Show Simple
+      </md-button>
+      
+      <div style="width:50px"></div>
+    </div>
 </div>
-<header class="group">
-    <div class="    appName">
+
+<script type="text/ng-template" id="toast-template.html">
+<md-toast>
+  <span flex>Custom toast!</span>
+  <md-button ng-click="closeToast()">
+    Close
+  </md-button>
+</md-toast>
+</script></div>
+
+
+<!--</div>-->
+<!-- <header class="group">
+    <div class="appName">
         InDaSTRiit
     </div>
-</header>
+</header>-->
+
 <div class="map-application" ng-controller="MapCtrl">
     <leaflet width="100%" height="100%" center="myPosition" event-broadcast="events"></leaflet>
+
 </div>
+
+<!--<script type="text/ng-template" id="toast-template.html"><md-toast>
+  <span flex>Custom toast!</span>
+  <md-button ng-click="closeToast()">
+    Close
+  </md-button>
+</md-toast>
+</script></div>-->
 <script src="lib/scripts/angular.min.js"></script>
 <script src="lib/scripts/angular-aria.min.js"></script>
 <script src="lib/scripts/angular-animate.min.js"></script>
 <script src="lib/scripts/angular-material.min.js"></script>
+
 <script src="lib/scripts/leaflet.js"></script>
 <script src="lib/scripts/osmtogeojson.js"></script>
 <script src="lib/scripts/angular-leaflet-directive.min.js"></script>

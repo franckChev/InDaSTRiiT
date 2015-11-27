@@ -1,0 +1,46 @@
+[
+  {
+    "id": "id_user",
+    "titre": "user",
+    "message": "Utilisateur dans les parages !"
+  },
+  {
+    "id": "id_offre",
+    "titre": "offre",
+    "message": "Offres de travails interessants !"
+  },
+  {
+    "id": "id_demande",
+    "titre": "demande",
+    "message": "Nombre de demandes interessants !"
+  },
+  {
+    "id": "id_cafe",
+    "titre": "cafe",
+    "message": "cafee favoris dans les parages !"
+  },
+  {
+    "id": "id_restaurant",
+    "titre": "restaurant",
+    "message": "Restaurant a votre gout dans les parages !"
+  },
+  {
+    "id": "id_sport",
+    "titre": "sport",
+    "message": 
+    {
+      "Gym": "Gym dans les lieux !",
+      "evenement": "Evenement sportif dans les lieux !"
+    }
+  },
+    {
+    "id": "id_musique",
+    "titre": "musique",
+    "message": "concert a proximitee !"
+  },
+    {
+    "id": "id_film",
+    "titre": "film",
+    "message": "Cinema a proximitee !"
+  }
+]

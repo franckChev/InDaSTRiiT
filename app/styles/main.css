@@ -25,8 +25,6 @@ html {
 	padding-top: 50px;
 
 }
-
-
 header {
 	position: absolute;
 	top: 0;
@@ -39,4 +37,8 @@ header {
 }
 header .appName {
 	float: left;
+}
+
+md-toast.md-coffe-toast-theme {
+    background-color: rgb(111,199,135);
 }

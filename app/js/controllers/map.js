@@ -69,6 +69,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     leafletData.getMap().then(function (map) {
         map.addLayer(circle);
     });
+
     //get score
     var score = my_widget.computeScore($scope.user, $scope, function(score){
         GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
