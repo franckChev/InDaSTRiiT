@@ -1,8 +1,8 @@
 inDaStriit.controller('NotificationsCtrl', function($scope, $mdToast, $document) 
 {
 	
-	function lol(message)
-	{
+	// function lol(message)
+	// {
 	var last = {
 		bottom: false,
 		top: true,
@@ -18,15 +18,24 @@ inDaStriit.controller('NotificationsCtrl', function($scope, $mdToast, $document)
 		.filter(function(pos) { return $scope.toastPosition[pos]; })
 		.join(' ');
 	};
-	$scope.showSimpleToast = function() {
+	$scope.showSimpleToast = function(message) {
 		var toast = $mdToast.simple();
-		toast.content("Offres interessants !");
+		toast.content(message);
 		toast.theme("coffe-toast");
 		toast.position("top right");
 		toast.hideDelay(3000);
 		$mdToast.show(toast);   
 	};
-}
+
+	$scope.$on("createNotification", function(event, args)
+	{
+		console.log("Wahouuu");
+		$scope.showSimpleToast(args.message);
+	});
+
+
+
+// }
 })
 	.controller('ToastCtrl', function($scope, $mdToast) {
 		$scope.closeToast = function() {

@@ -1,7 +1,7 @@
-inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog", "GeoJSONFactory", "my_widget", function ($scope, $http, leafletData, $mdDialog, GeoJSONFactory, my_widget) {
+inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog", "GeoJSONFactory", "my_widget", "$rootScope", function ($scope, $http, leafletData, $mdDialog, GeoJSONFactory, my_widget, $rootScope) {
     /* Map Init */
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
-    var osmAttrib = 'Map data � <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     $scope.quartier = my_widget.initScore;
 
     // my_widget.getUserScore(function(userScore)
@@ -72,7 +72,10 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
 
     //get score
     var score = my_widget.computeScore($scope.user, $scope, function(score){
-        GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
+        if (score > 4) {
+            console.log("Create Notification");
+            $rootScope.$broadcast("createNotification", {message : "Ce quartier peut vous intéresser !"});
+            GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
             $scope[feature.properties.name] = feature.properties;
             layer.on("click", function (e) {
                 $scope.current = $scope[e.target.feature.properties.name];
@@ -88,7 +91,9 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
                     }
                 });
             });
-        });
+        });    
+        }
+        
         console.log("score", score);
     });
     

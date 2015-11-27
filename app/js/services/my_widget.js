@@ -68,10 +68,11 @@ inDaStriit.factory('my_widget', ['$http', 'leafletData', '$q', function ($http, 
 				}
 				var coef = [];
 				for (index in user_score[0].properties.nbLikes[0]){
-					coef[index] = user_score[0].properties.nbLikes[0][index] / totalLikes * 100;
+					coef[index] = user_score[0].properties.nbLikes[0][index] / totalLikes;
 				}
 				var score = 0;
 				console.log("quartier", quartier);
+				console.log("user", user_score);
 				for (index in quartier) {
 					score += quartier[index].score * coef[index];
 				}
