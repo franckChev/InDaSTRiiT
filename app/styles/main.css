@@ -42,3 +42,7 @@ header .appName {
 md-toast.md-coffe-toast-theme {
     background-color: rgb(111,199,135);
 }
+
+.leaflet-control-layers.leaflet-control {
+	display: none;
+}

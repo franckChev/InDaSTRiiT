@@ -12,14 +12,23 @@
     <title>InDaSTRiit</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="lib/styles/angular-material.css">
     <link rel="stylesheet" href="lib/styles/leaflet.css">
+    <link rel="stylesheet" href="scripts/leaflet.awesome-markers.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body ng-app="inDaStriit">
 <!--<div class="notifications" ng-controller="NotificationsCtrl">-->
+
+<div class="panel-command">
+    <md-switch ng-model="serchServiceProvider">
+        A la recherche d'un prestataire de service ?
+    </md-switch>
+</div>
+
 
 <div ng-controller="NotificationsCtrl">
 <div layout-fill="" layout="column" class="inset toastdemoBasicUsage" ng-cloak="" >
@@ -55,7 +64,7 @@
 </header>-->
 
 <div class="map-application" ng-controller="MapCtrl">
-    <leaflet width="100%" height="100%" center="myPosition" event-broadcast="events"></leaflet>
+    <leaflet width="100%" height="100%" center="myPosition" event-broadcast="events" layers="layers"></leaflet>
 
 </div>
 
@@ -71,10 +80,10 @@
 <script src="lib/scripts/angular-aria.min.js"></script>
 <script src="lib/scripts/angular-animate.min.js"></script>
 <script src="lib/scripts/angular-material.min.js"></script>
-
 <script src="lib/scripts/leaflet.js"></script>
+<script src="scripts/leaflet.awesome-markers.js"></script>
 <script src="lib/scripts/osmtogeojson.js"></script>
-<script src="lib/scripts/angular-leaflet-directive.min.js"></script>
+<script src="lib/scripts/angular-leaflet-directive.js"></script>
 <script src="scripts/main.js"></script>
 <script src="js/controllers/map.js"></script>
 <script src="js/controllers/notifications.js"></script>
