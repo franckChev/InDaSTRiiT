@@ -2,41 +2,6 @@
   {
     "type": "Feature",
     "properties": {
-      "name": "Chris",
-      "offre": 200,
-      "demande": 50,
-      "age": 25,
-      "genre": "h",
-      "nbLikes": [{
-        "resto": 32,
-        "bars": 2,
-        "bands": 3,
-        "sports": 15,
-        "films": 2,
-        "books": 1
-      }],
-      "catSociale": "etudiant",
-      "situation": "celibataire",
-      "events": [{
-        "concert": 1,
-        "manif": 0,
-        "soiree": 3,
-        "conference": 5,
-        "sport": 2
-        }]
-    },
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        2.392937,
-        48.813948
-      ]
-    }
-  },
-
-  {
-    "type": "Feature",
-    "properties": {
       "name": "Joe",
       "offre": 20,
       "demande": 150,

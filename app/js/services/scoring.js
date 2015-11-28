@@ -48,38 +48,36 @@ inDaStriit.factory('ScoringFactory', ['$http', 'leafletData', '$q', function ($h
 	                if (data.features[item].properties !== undefined)
 	                {
 	                    var tags = data.features[item].properties.tags;
-	                    for (category in name.quartier) {
-	                        if (name.quartier[category].amenities.indexOf(tags.amenity) !== -1)
-	                            name.quartier[category].score++;
+	                    for (category in name.neighborhood) {
+	                        if (name.neighborhood[category].amenities.indexOf(tags.amenity) !== -1)
+	                            name.neighborhood[category].score++;
 						}
 	                    
 	                }
 	        	}
+				console.log("Scoring > " , factory.initScore);
         		defer.resolve(factory.initScore);
-        	})
+        	});
         	return defer.promise;
     	},
     	computeScore: function(user_score, scope, callback){
     		factory.completeScore(scope).then(function(quartier)
     		{
 	    		var totalLikes = 0;
-	    		for (var index in user_score[0].properties.nbLikes[0]) {
-	   				totalLikes += user_score[0].properties.nbLikes[0][index];
+	    		for (var index in user_score.properties.nbLikes[0]) {
+	   				totalLikes += user_score.properties.nbLikes[0][index];
 				}
 				var coef = [];
-				for (index in user_score[0].properties.nbLikes[0]){
-					coef[index] = user_score[0].properties.nbLikes[0][index] / totalLikes;
+				for (index in user_score.properties.nbLikes[0]){
+					coef[index] = user_score.properties.nbLikes[0][index] / totalLikes;
 				}
 				var score = 0;
-				console.log("quartier", quartier);
-				console.log("user", user_score);
 				for (index in quartier) {
 					score += quartier[index].score * coef[index];
 				}
-				console.log("yolo", score);
 				callback(score);
     		});
     	}
-    }
+    };
     return factory;
 }]);

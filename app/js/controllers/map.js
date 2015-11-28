@@ -2,13 +2,9 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     /* Map Init */
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-    $scope.quartier = ScoringFactory.initScore;
+    $scope.neighborhood  = ScoringFactory.initScore;
 
-    // ScoringFactory.getUserScore(function(userScore)
-    // {
-    //     $scope.user = userScore;
-    //     console.log($scope.user);
-    // })
+    $scope.positionChoice = "position1";
 
     $scope.$watch("serchServiceProvider", function (newValue, oldValue) {
         if (newValue !== oldValue && $scope.layers !== undefined) {
@@ -17,36 +13,49 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         }
     });
 
+    $scope.$watch("positionChoice", function(newValue, oldValue)
+    {
+       if (newValue !== oldValue)
+       {
+           console.log("NewValue>", newValue);
+       }
+    });
 
-    $scope.user = [
-        {
-            "type": "Feature",
-            "properties": {
-                "name": "Bob",
-                "offre": 200,
-                "demande": 50,
-                "age": 18,
-                "genre": "h",
-                "nbLikes": [{
-                    "resto": 2,
-                    "bars": 25,
-                    "bands": 3,
-                    "sports": 48,
-                    "films": 0,
-                    "books": 78
-                }],
-                "catSociale": "etudiant",
-                "situation": "celibataire",
-                "events": [{
-                    "concert": 0,
-                    "manif": 0,
-                    "soiree": 5,
-                    "conference": 1,
-                    "sport": 14
-                }]
-            }
+    $scope.user =
+    {
+        "type": "Feature",
+        "properties": {
+            "name": "Bob",
+            "offre": 200,
+            "demande": 50,
+            "age": 18,
+            "genre": "h",
+            "nbLikes": [{
+                "resto": 2,
+                "bars": 25,
+                "bands": 3,
+                "sports": 48,
+                "films": 0,
+                "books": 78
+            }],
+            "catSociale": "etudiant",
+            "situation": "celibataire",
+            "events": [{
+                "concert": 0,
+                "manif": 0,
+                "soiree": 5,
+                "conference": 1,
+                "sport": 14
+            }]
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                2.392937,
+                48.813948
+            ]
         }
-    ];
+    };
 
     angular.extend($scope, {
         myPosition: {
@@ -78,11 +87,10 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         }
 
     });
-
     var options = {};
     options.icon = "people";
     options.markerColor = "red";
-    options.onEachFeature =function (feature, layer) {
+    options.onEachFeature = function (feature, layer) {
         $scope[feature.properties.name] = feature.properties;
         layer.on("click", function (e) {
             $scope.current = $scope[e.target.feature.properties.name];
@@ -100,16 +108,22 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         });
     };
     options.visible = false;
-    GeoJSONFactory.applyGeoJSON("services", options).then(function (layer) {
+    GeoJSONFactory.applyGeoJSONFromFile("services", options).then(function (layer) {
         angular.extend($scope.layers.overlays, {services: layer});
     });
     profilesOptions = angular.copy(options);
     profilesOptions.visible = true;
     profilesOptions.icon = "face";
     profilesOptions.markerColor = "pink";
-    GeoJSONFactory.applyGeoJSON("profiles", profilesOptions).then(function (layer) {
+    GeoJSONFactory.applyGeoJSONFromFile("profiles", profilesOptions).then(function (layer) {
         angular.extend($scope.layers.overlays, {profiles: layer});
     });
+    myUserOptions = angular.copy(options);
+    myUserOptions.visible = true;
+    myUserOptions.icon = "person";
+    myUserOptions.markerColor = "blue";
+    var layer = GeoJSONFactory.applyGeoJSONFromLocalVariable($scope.user, myUserOptions);
+    angular.extend($scope.layers.overlays, {myUser: layer});
 
 
     var circle = L.circle([$scope.myPosition.lat, $scope.myPosition.lng], 100);
@@ -118,52 +132,49 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     });
 
 //get score
-//var score = ScoringFactory.computeScore($scope.user, $scope, function (score) {
-//    if (score > 4) {
-//        console.log("Create Notification");
-//        $rootScope.$broadcast("createNotification", {message: "Ce quartier peut vous intéresser !"});
-//        GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
-//            $scope[feature.properties.name] = feature.properties;
-//            layer.on("click", function (e) {
-//                $scope.current = $scope[e.target.feature.properties.name];
-//                $mdDialog.show({
-//                    clickOutsideToClose: true,
-//                    scope: $scope,
-//                    preserveScope: true,
-//                    templateUrl: 'partials/profilePopup.html',
-//                    controller: function DialogController($scope, $mdDialog) {
-//                        $scope.closeDialog = function () {
-//                            $mdDialog.hide();
-//                        }
-//                    }
-//                });
-//            });
-//        });
-//    }
-//
-//    console.log("score", score);
-//});
+var score = ScoringFactory.computeScore($scope.user, $scope, function (score) {
+    if (score > 4) {
+        console.log("Create Notification");
+        $rootScope.$broadcast("createNotification", {message: "Ce quartier peut vous intéresser !"});
+        //GeoJSONFactory.applyGeoJSON("profiles", function (feature, layer) {
+        //            $scope[feature.properties.name] = feature.properties;
+        //            layer.on("click", function (e) {
+        //                $scope.current = $scope[e.target.feature.properties.name];
+        //                $mdDialog.show({
+        //                    clickOutsideToClose: true,
+        //                    scope: $scope,
+        //                    preserveScope: true,
+        //                    templateUrl: 'partials/profilePopup.html',
+        //                    controller: function DialogController($scope, $mdDialog) {
+        //                        $scope.closeDialog = function () {
+        //                            $mdDialog.hide();
+        //                        }
+        //                    }
+        //                });
+        //    });
+        //});
+    }
+
+    console.log("score", score);
+});
 
     /* Retrieve profiles */
 
 
-// $http.get('http://overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node["amenity"](around:1000,'+ $scope.myPosition.lat +','+ $scope.myPosition.lng +');way["amenity"](around:1000,48.8131354,2.393143);relation["amenity"](around:1000,48.8131354,2.393143););out body;>;out skel qt;').success(function (result) {
-//     var data = osmtogeojson(result);
-//     for (item in data.features)
-//     {
-//             if (data.features[item].properties !== undefined)
-//             {
-//                 var tags = data.features[item].properties.tags;
-//                 for (category in $scope.scoring) {
-//                     if ($scope.scoring[category].amenities.indexOf(tags.amenity) !== -1)
-//                         $scope.scoring[category].score++;
-//                 }
+ $http.get('http://overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node["amenity"](around:1000,'+ $scope.myPosition.lat +','+ $scope.myPosition.lng +');way["amenity"](around:1000,48.8131354,2.393143);relation["amenity"](around:1000,48.8131354,2.393143););out body;>;out skel qt;').success(function (result) {
+     var data = osmtogeojson(result);
+     for (item in data.features) {
+         if (data.features[item].properties !== undefined) {
+             var tags = data.features[item].properties.tags;
+             for (category in $scope.scoring) {
+                 if ($scope.scoring[category].amenities.indexOf(tags.amenity) !== -1)
+                     $scope.scoring[category].score++;
+             }
 
-//             }
-//     }
+         }
+     }
 
-
-    console.log($scope.quartier);
+ });
 // leafletData.getMap().then(function (map) {
 //     console.log(geojson);
 //     map.addLayer(geojson);
