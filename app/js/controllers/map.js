@@ -1,14 +1,8 @@
 inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog", "ScoringFactory", "$rootScope", "GeoJSONFactory", function ($scope, $http, leafletData, $mdDialog, ScoringFactory, $rootScope, GeoJSONFactory) {
     /* Map Init */
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
-<<<<<<< HEAD
-    var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-
-    $scope.quartier = my_widget.initScore;
-=======
     var osmAttrib = 'Map data Â© <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     $scope.quartier = ScoringFactory.initScore;
->>>>>>> 3407a12bed1045122d8e50ad71db109867a1d1e3
 
     // ScoringFactory.getUserScore(function(userScore)
     // {
@@ -84,29 +78,6 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         }
 
     });
-<<<<<<< HEAD
-    console.log(leafletData);
-    var circle = L.circle([$scope.myPosition.lat, $scope.myPosition.lng], 100);
-    leafletData.getMap().then(function (map) {
-        map.addLayer(circle);
-    });
- 
-   /*ar marker = L.marker([48.8139878, 2.3927642]);    
-    leafletData.getMap().then(function (map) {
-        map.addLayer(marker);
-    });*/
-
-
-    var redMarker = L.AwesomeMarkers.icon({
-    icon: 'coffee',
-    markerColor: 'red'});
-    L.marker([48.8139878, 2.3927645], {icon: redMarker});
-    leafletData.getMap().then(function (map) {
-        map.addLayer(redMarker);
-    });
-
-=======
->>>>>>> 3407a12bed1045122d8e50ad71db109867a1d1e3
 
     var options = {};
     options.icon = "people";

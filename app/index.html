@@ -19,10 +19,6 @@
     <link rel="stylesheet" href="scripts/leaflet.awesome-markers.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="shortcut icon" href="/favicon.ico">
-    <!--<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="lib/styles/leaflet.awesome-markers.css">
-
 </head>
 <body ng-app="inDaStriit">
 <!--<div class="notifications" ng-controller="NotificationsCtrl">-->
@@ -35,7 +31,17 @@
 
 
 <div ng-controller="NotificationsCtrl">
+<div layout-fill="" layout="column" class="inset toastdemoBasicUsage" ng-cloak="" >
 
+    <div layout="row" layout-sm="column" layout-align="space-around">
+      <div style="width:50px"></div>
+      <md-button ng-click="showSimpleToast()">
+        Show Simple
+      </md-button>
+      
+      <div style="width:50px"></div>
+    </div>
+</div>
 
 <div ng-controller="ServicesFinderCtrl">
 </div>
@@ -89,12 +95,7 @@
 <script src="js/controllers/map.js"></script>
 <script src="js/controllers/notifications.js"></script>
 <script src="js/services/geojson.js"></script>
-<<<<<<< HEAD
-<script src="js/services/my_widget.js"></script>
-<script src="lib/scripts/leaflet.awesome-markers.js"></script>
-=======
 <script src="js/services/scoring.js"></script>
 <script src="js/controllers/services_finder.js"></script>
->>>>>>> 3407a12bed1045122d8e50ad71db109867a1d1e3
 </body>
 </html>
