@@ -1,0 +1,20 @@
+[
+{
+    "type": "Feature",
+    "properties": {
+      "name": "Conchita",
+      "service": "plombier",
+      "contact": [{
+        "phone": "0612345678",
+        "mail": "conchita@plomberie.fr"
+      }]
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2.393917,
+        48.812958
+      ]
+    }
+  }
+  ]

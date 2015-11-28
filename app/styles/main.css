@@ -21,9 +21,7 @@ html {
 
 .map-application {
 	height: 100%;
-
 	padding-top: 50px;
-
 }
 header {
 	position: absolute;
@@ -41,4 +39,8 @@ header .appName {
 
 md-toast.md-coffe-toast-theme {
     background-color: rgb(111,199,135);
+}
+
+.leaflet-control-layers.leaflet-control {
+	display: none;
 }

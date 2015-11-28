@@ -51,7 +51,7 @@ inDaStriit.factory('ScoringFactory', ['$http', 'leafletData', '$q', function ($h
 	                    for (category in name.quartier) {
 	                        if (name.quartier[category].amenities.indexOf(tags.amenity) !== -1)
 	                            name.quartier[category].score++;
-	                    }
+						}
 	                    
 	                }
 	        	}
