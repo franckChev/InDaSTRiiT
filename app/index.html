@@ -17,22 +17,16 @@
     <link rel="stylesheet" href="lib/styles/leaflet.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="shortcut icon" href="/favicon.ico">
+    <!--<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/styles/leaflet.awesome-markers.css">
+
 </head>
 <body ng-app="inDaStriit">
 <!--<div class="notifications" ng-controller="NotificationsCtrl">-->
 
 <div ng-controller="NotificationsCtrl">
-<div layout-fill="" layout="column" class="inset toastdemoBasicUsage" ng-cloak="" >
 
-    <div layout="row" layout-sm="column" layout-align="space-around">
-      <div style="width:50px"></div>
-      <md-button ng-click="showSimpleToast()">
-        Show Simple
-      </md-button>
-      
-      <div style="width:50px"></div>
-    </div>
-</div>
 
 <script type="text/ng-template" id="toast-template.html">
 <md-toast>
@@ -76,5 +70,6 @@
 <script src="js/controllers/notifications.js"></script>
 <script src="js/services/geojson.js"></script>
 <script src="js/services/my_widget.js"></script>
+<script src="lib/scripts/leaflet.awesome-markers.js"></script>
 </body>
 </html>

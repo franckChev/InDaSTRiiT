@@ -2,6 +2,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     /* Map Init */
     var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+
     $scope.quartier = my_widget.initScore;
 
     // my_widget.getUserScore(function(userScore)
@@ -69,6 +70,21 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     leafletData.getMap().then(function (map) {
         map.addLayer(circle);
     });
+ 
+   /*ar marker = L.marker([48.8139878, 2.3927642]);    
+    leafletData.getMap().then(function (map) {
+        map.addLayer(marker);
+    });*/
+
+
+    var redMarker = L.AwesomeMarkers.icon({
+    icon: 'coffee',
+    markerColor: 'red'});
+    L.marker([48.8139878, 2.3927645], {icon: redMarker});
+    leafletData.getMap().then(function (map) {
+        map.addLayer(redMarker);
+    });
+
 
     //get score
     var score = my_widget.computeScore($scope.user, $scope, function(score){
