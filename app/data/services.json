@@ -1,14 +1,16 @@
 [
-{
+  {
     "type": "Feature",
     "properties": {
       "name": "Pablo",
       "service": "plombier",
-      "status" : "offline",
-      "contact": [{
-        "phone": "0612345678",
-        "mail": "conchita@plomberie.fr"
-      }]
+      "status": "offline",
+      "contact": [
+        {
+          "phone": "0612345678",
+          "mail": "pablo@plomberie.fr"
+        }
+      ]
     },
     "geometry": {
       "type": "Point",
@@ -17,5 +19,26 @@
         48.812958
       ]
     }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Eric",
+      "service": "informaticien",
+      "status": "online",
+      "contact": [
+        {
+          "phone": "0612345678",
+          "mail": "eric@plomberie.fr"
+        }
+      ]
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        2.391607,
+        48.815173
+      ]
+    }
   }
-  ]
+]

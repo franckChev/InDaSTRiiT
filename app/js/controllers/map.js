@@ -13,12 +13,6 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         }
     });
 
-    $scope.$watch("positionChoice", function (newValue, oldValue) {
-        if (newValue !== oldValue) {
-            console.log("NewValue>", newValue);
-        }
-    });
-
     $scope.user =
     {
         "type": "Feature",
@@ -158,6 +152,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     };
     options.visible = false;
     GeoJSONFactory.applyGeoJSONFromFile("services", options).then(function (layer) {
+        console.log(layer);
         angular.extend($scope.layers.overlays, {services: layer});
     });
     profilesOptions = angular.copy(options);
