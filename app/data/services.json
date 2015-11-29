@@ -2,8 +2,9 @@
 {
     "type": "Feature",
     "properties": {
-      "name": "Conchita",
+      "name": "Pablo",
       "service": "plombier",
+      "status" : "offline",
       "contact": [{
         "phone": "0612345678",
         "mail": "conchita@plomberie.fr"

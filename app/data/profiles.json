@@ -3,7 +3,12 @@
     "type": "Feature",
     "properties": {
       "name": "Joe",
-      "offre": 20,
+      "offre": {
+        "type" : "Studio",
+        "surface" : 20,
+        "prix" : 450
+      },
+      "status" : "online",
       "demande": 150,
       "age": 35,
       "genre": "h",
