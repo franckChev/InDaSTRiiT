@@ -5,7 +5,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     $scope.neighborhood = ScoringFactory.initScore;
 
     $scope.positionChoice = "position1";
-
+    //services
     $scope.$watch("serchServiceProvider", function (newValue, oldValue) {
         if (newValue !== oldValue && $scope.layers !== undefined) {
             console.log($scope.layers.overlays);
@@ -24,6 +24,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         "type": "Feature",
         "properties": {
             "name": "Bob",
+            "mail": "bob@instriit.com",
             "offre": 200,
             "demande": 50,
             "age": 18,
@@ -85,18 +86,68 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         }
 
     });
+
+    //add service
+    $scope.addServiceProvider = function()
+    {
+        //bring popup form
+        $scope.current = $scope.user.properties;
+        $mdDialog.show({
+            clickOutsideToClose: true,
+            scope: $scope,
+            preserveScope: true,
+            templateUrl: 'partials/newServicePopup.html',
+            controller: function DialogController($scope, $mdDialog) {
+                $scope.closeDialog = function () {
+                    $mdDialog.hide();
+                };
+                $scope.newServiceForm = function(){
+                    if ($scope.new && $scope.new.service && $scope.new.phone)
+                    {
+                        var newService =
+                        {  
+                            "type": "Feature",
+                            "properties": {
+                              "name": $scope.user.name,
+                              "service": $scope.new.service,
+                              "contact": [{
+                                "phone": $scope.new.phone,
+                                "mail": $scope.user.mail
+                              }]
+                            },
+                            "geometry": {
+                              "type": "Point",
+                              "coordinates": [
+                                $scope.myPosition.lng,
+                                $scope.myPosition.lat
+                              ]
+                            }
+                        }
+                        console.log("new", newService);
+                        $scope.closeDialog();
+                    }
+                    
+                };
+            }
+        });
+    };
+    
+
     var options = {};
     options.icon = "people";
     options.markerColor = "red";
     options.onEachFeature = function (feature, layer) {
         $scope[feature.properties.name] = feature.properties;
+        var url = 'partials/profilePopup.html';
+        if (feature.properties.service)
+            var url = 'partials/servicePopup.html'
         layer.on("click", function (e) {
             $scope.current = $scope[e.target.feature.properties.name];
             $mdDialog.show({
                 clickOutsideToClose: true,
                 scope: $scope,
                 preserveScope: true,
-                templateUrl: 'partials/servicePopup.html',
+                templateUrl: url,
                 controller: function DialogController($scope, $mdDialog) {
                     $scope.closeDialog = function () {
                         $mdDialog.hide();
