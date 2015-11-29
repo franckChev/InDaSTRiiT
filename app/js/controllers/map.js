@@ -12,22 +12,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
             $scope.layers.overlays.services.visible = newValue;
         }
     });
-    //add service
-    $scope.addServiceProvider = function()
-    {
-        //bring popup form
-        $mdDialog.show({
-            clickOutsideToClose: true,
-            scope: $scope,
-            preserveScope: true,
-            templateUrl: 'partials/newServicePopup.html',
-            controller: function DialogController($scope, $mdDialog) {
-                $scope.closeDialog = function () {
-                    $mdDialog.hide();
-                }
-            }
-        });
-    }
+    
     $scope.$watch("positionChoice", function(newValue, oldValue)
     {
        if (newValue !== oldValue)
@@ -41,6 +26,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         "type": "Feature",
         "properties": {
             "name": "Bob",
+            "mail": "bob@instriit.com",
             "offre": 200,
             "demande": 50,
             "age": 18,
@@ -102,6 +88,53 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
         }
 
     });
+
+    //add service
+    $scope.addServiceProvider = function()
+    {
+        //bring popup form
+        $scope.current = $scope.user.properties;
+        $mdDialog.show({
+            clickOutsideToClose: true,
+            scope: $scope,
+            preserveScope: true,
+            templateUrl: 'partials/newServicePopup.html',
+            controller: function DialogController($scope, $mdDialog) {
+                $scope.closeDialog = function () {
+                    $mdDialog.hide();
+                };
+                $scope.newServiceForm = function(){
+                    if ($scope.new && $scope.new.service && $scope.new.phone)
+                    {
+                        var newService =
+                        {  
+                            "type": "Feature",
+                            "properties": {
+                              "name": $scope.user.name,
+                              "service": $scope.new.service,
+                              "contact": [{
+                                "phone": $scope.new.phone,
+                                "mail": $scope.user.mail
+                              }]
+                            },
+                            "geometry": {
+                              "type": "Point",
+                              "coordinates": [
+                                $scope.myPosition.lng,
+                                $scope.myPosition.lat
+                              ]
+                            }
+                        }
+                        console.log("new", newService);
+                        $scope.closeDialog();
+                    }
+                    
+                };
+            }
+        });
+    };
+    
+
     var options = {};
     options.icon = "people";
     options.markerColor = "red";
