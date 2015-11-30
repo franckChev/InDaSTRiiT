@@ -28,7 +28,6 @@ inDaStriit.controller('NotificationsCtrl', function($scope, $mdToast, $document)
 
 	$scope.$on("createNotification", function(event, args)
 	{
-		console.log("Wahouuu");
 		$scope.showSimpleToast(args.message);
 	});
 

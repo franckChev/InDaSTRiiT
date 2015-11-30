@@ -34,11 +34,6 @@ inDaStriit.factory('ScoringFactory', ['$http', 'leafletData', '$q', function ($h
 
 
         },
-    	getUserScore: function(callback){
-    		$http.get("data/current_user.json").success(function(data) {
-    			callback(data);
-    		})
-    	},
         completeScore: function(name){
         	var defer = $q.defer();
         	$http.get('http://overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node["amenity"](around:1000,'+ name.myPosition.lat +','+ name.myPosition.lng +');way["amenity"](around:1000,48.8131354,2.393143);relation["amenity"](around:1000,48.8131354,2.393143););out body;>;out skel qt;').success(function (result) {
