@@ -190,7 +190,7 @@ inDaStriit.controller('MapCtrl', ["$scope", "$http", "leafletData", "$mdDialog",
     angular.extend($scope.layers.overlays, {myUser: layer});
 
 
-    var circle = L.circle([$scope.myPosition.lat, $scope.myPosition.lng], 100);
+    var circle = L.circle([$scope.myPosition.lat, $scope.myPosition.lng], 250);
     leafletData.getMap().then(function (map) {
         map.addLayer(circle);
     });
